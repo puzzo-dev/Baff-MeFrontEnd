@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -12,6 +11,7 @@ import { Sheet } from "@/components/ui/sheet"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false) // Added cart open state
   const [hasScrolled, setHasScrolled] = useState(false)
   const { theme, setTheme } = useTheme()
   const [cartCount, setCartCount] = useState(0)
@@ -24,6 +24,12 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const changeTheme = () => {
+    const hour = new Date().getHours()
+    const isDay = hour >= 6 && hour < 18
+    setTheme(theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark')
+  }
 
   const navClasses = cn(
     "fixed top-0 z-[100] w-full transition-all duration-300",
@@ -125,10 +131,7 @@ export function Navbar() {
 
             <div className="flex items-center space-x-2 md:space-x-4">
               <button 
-                onClick={() => {
-                  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-                  setTheme(theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark')
-                }}
+                onClick={changeTheme} // Use the new theme changing function
                 className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors"
               >
                 <div className="relative w-5 h-5">
@@ -148,14 +151,17 @@ export function Navbar() {
                   />
                 </div>
               </button>
-              <Link href="/cart" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors relative">
+              <button onClick={() => setIsCartOpen(true)} className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors relative">
                 <ShoppingCart size={20} />
                 {cartCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
-              </Link>
+              </button>
+              <Sheet isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} side="right">
+                {/* Cart content would go here */}
+              </Sheet>
             </div>
           </div>
         </div>
