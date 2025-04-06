@@ -26,18 +26,18 @@ export default function MobileNav() {
             ? 'text-primary' 
             : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
         >
-          <i className="bx bx-category text-xl"></i>
+          <i className="bx bx-shopping-bag text-xl"></i>
           <span className="text-[10px] mt-1 font-medium">Shop</span>
         </Link>
         
         <Link 
-          href="/journal" 
-          className={`flex flex-col items-center ${location.startsWith('/journal') 
+          href="/sustainability" 
+          className={`flex flex-col items-center ${location === '/sustainability' 
             ? 'text-primary' 
             : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
         >
-          <i className="bx bx-book-open text-xl"></i>
-          <span className="text-[10px] mt-1 font-medium">Journal</span>
+          <i className="bx bx-leaf text-xl"></i>
+          <span className="text-[10px] mt-1 font-medium">Eco</span>
         </Link>
         
         <Link 

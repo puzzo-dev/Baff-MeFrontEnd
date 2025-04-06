@@ -67,10 +67,10 @@ export default function Navbar() {
           {/* Main Navigation - Desktop */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8">
             <Link 
-              href="/products?category=new" 
+              href="/products" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/products?category=new' ? 'text-primary' : ''}`}>
-              NEW
+                ${location === '/products' ? 'text-primary' : ''}`}>
+              SHOP
             </Link>
             <Link 
               href="/products?category=men" 
@@ -85,10 +85,10 @@ export default function Navbar() {
               WOMEN
             </Link>
             <Link 
-              href="/products" 
+              href="/sustainability" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/products' ? 'text-primary' : ''}`}>
-              COLLECTIONS
+                ${location === '/sustainability' ? 'text-primary' : ''}`}>
+              SUSTAINABILITY
             </Link>
             <Link 
               href="/journal" 
