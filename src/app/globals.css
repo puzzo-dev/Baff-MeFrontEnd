@@ -75,8 +75,8 @@
   }
 
   .product-card {
-    @apply group relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 
-           shadow-sm hover:shadow-xl transition-all duration-500;
+    @apply relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900;
+    @apply shadow-sm hover:shadow-xl transition-all duration-500;
   }
 
   .product-card-image {
