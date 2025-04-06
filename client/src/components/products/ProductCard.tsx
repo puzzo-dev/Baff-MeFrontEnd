@@ -76,13 +76,15 @@ export default function ProductCard({ product }: ProductCardProps) {
                 ></div>
               ))}
             </div>
-            <button 
-              className="bg-[#111111] dark:bg-white text-white dark:text-[#111111] p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            <motion.button 
+              className="bg-[#111111] dark:bg-white text-white dark:text-[#111111] p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white"
               onClick={handleQuickAdd}
               aria-label="Add to bag"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ y: -2 }}
             >
-              <i className="bx bx-plus"></i>
-            </button>
+              <i className="bx bx-shopping-bag"></i>
+            </motion.button>
           </div>
         </a>
       </Link>
