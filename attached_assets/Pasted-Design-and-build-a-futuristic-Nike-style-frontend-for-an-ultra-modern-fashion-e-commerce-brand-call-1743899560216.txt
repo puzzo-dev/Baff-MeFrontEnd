@@ -1,0 +1,51 @@
+Design and build a futuristic, Nike-style frontend for an ultra-modern fashion e-commerce brand called Baff-Me.
+
+Brand Personality: Baff-Me is bold, edgy, and trend-forward, focused on casual and street-style fashion for both juniors and seniors. Think urban vibe, clean layout, high contrast, and strong visual identity.
+
+Design Aesthetic:
+
+Visuals similar to Nike's modern product pages: minimal, immersive, strong use of whitespace, crisp typography, and motion.
+
+Animations and transitions using Framer Motion or Tailwind CSS transitions for a smooth, polished experience.
+
+Responsive design with mobile-first layout, optimized for Gen Z and millennials.
+
+Dark/light theme toggle (based on system preference).
+
+Product cards with hover effects, 360° view, color swatches, and quick-add options.
+
+Core Pages to Include:
+
+Homepage: Hero banner with model shots, new arrivals, and featured collections.
+
+Product Listing Page (PLP): Grid with filters, size/color selectors, quick views.
+
+Product Detail Page (PDP): High-res images, video support, size guides, reviews, upsells.
+
+Cart & Checkout Flow: Streamlined, frictionless, mobile-friendly with clear CTAs.
+
+Account Dashboard: Order history, saved items, size profile.
+
+Style Journal or blog-style content section.
+
+Admin CMS hooks: Integrate with MedusaJS collections, product categories, promotions, etc.
+
+Tech Stack & Requirements:
+
+Frontend: Next.js 15 (App Router), Tailwind CSS, Framer Motion
+
+Backend: MedusaJS (headless commerce)
+
+State Management: Zustand or React Context
+
+API Integration: Fully dynamic product, cart, user auth, and checkout flows with MedusaJS REST or GraphQL API
+
+Use Server Actions and RSCs for optimal performance on Next.js 15
+
+Include SEO best practices, OG tags, structured data
+
+Support for i18n and accessibility (WCAG 2.1)
+
+Output a modular and scalable codebase, with reusable components, layouts, and hooks. Follow best practices for file structure, TypeScript typing, and performance optimizations.
+
+Use Nike.com and Adidas.com as style references, but make sure the Baff-Me brand has its own unique, confident voice that appeals to fashion-forward urban youth and young adults.
