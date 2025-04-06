@@ -1,3 +1,4 @@
+
 import { Link } from 'wouter';
 
 export default function Footer() {
@@ -33,7 +34,7 @@ export default function Footer() {
           <div>
             <h3 className="font-medium text-white mb-4">SHOP</h3>
             <ul className="space-y-2">
-              <li><Link href="/products?category=new" className="text-gray-400 hover:text-white transition duration-150">New Arrivals</Link></li>
+              <li><Link href="/products" className="text-gray-400 hover:text-white transition duration-150">All Products</Link></li>
               <li><Link href="/products?category=men" className="text-gray-400 hover:text-white transition duration-150">Men</Link></li>
               <li><Link href="/products?category=women" className="text-gray-400 hover:text-white transition duration-150">Women</Link></li>
               <li><Link href="/products?category=accessories" className="text-gray-400 hover:text-white transition duration-150">Accessories</Link></li>
@@ -45,11 +46,11 @@ export default function Footer() {
           <div>
             <h3 className="font-medium text-white mb-4">HELP</h3>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Customer Service</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Track Order</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Returns & Exchanges</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Shipping Info</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">FAQ</Link></li>
+              <li><Link href="/faq" className="text-gray-400 hover:text-white transition duration-150">FAQ</Link></li>
+              <li><Link href="/track-order" className="text-gray-400 hover:text-white transition duration-150">Track Order</Link></li>
+              <li><Link href="/returns" className="text-gray-400 hover:text-white transition duration-150">Returns & Exchanges</Link></li>
+              <li><Link href="/shipping" className="text-gray-400 hover:text-white transition duration-150">Shipping Info</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-white transition duration-150">Contact Us</Link></li>
             </ul>
           </div>
           
@@ -71,10 +72,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Baff-Me. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <Link href="#" className="hover:text-white transition duration-150">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition duration-150">Terms of Service</Link>
-            <Link href="#" className="hover:text-white transition duration-150">Accessibility</Link>
-            <Link href="#" className="hover:text-white transition duration-150">Cookie Settings</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition duration-150">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition duration-150">Terms of Service</Link>
+            <Link href="/accessibility" className="hover:text-white transition duration-150">Accessibility</Link>
           </div>
         </div>
       </div>
