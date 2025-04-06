@@ -1,34 +1,30 @@
 
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
-import { medusa } from '@/lib/medusa'
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-const CartContext = createContext<any>(null)
-
-export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState(null)
-
-  useEffect(() => {
-    const initCart = async () => {
-      const existingCartId = localStorage.getItem('cartId')
-      if (existingCartId) {
-        try {
-          const { cart } = await medusa.carts.retrieve(existingCartId)
-          setCart(cart)
-        } catch (error) {
-          localStorage.removeItem('cartId')
-        }
-      }
-    }
-    initCart()
-  }, [])
-
-  return (
-    <CartContext.Provider value={{ cart, setCart }}>
-      {children}
-    </CartContext.Provider>
-  )
+interface CartState {
+  items: CartItem[]
+  addItem: (item: CartItem) => void
+  removeItem: (id: string) => void
+  clearCart: () => void
 }
 
-export const useCart = () => useContext(CartContext)
+export const useCart = create<CartState>()(
+  persist(
+    (set) => ({
+      items: [],
+      addItem: (item) => set((state) => ({ 
+        items: [...state.items, item] 
+      })),
+      removeItem: (id) => set((state) => ({ 
+        items: state.items.filter((item) => item.id !== id) 
+      })),
+      clearCart: () => set({ items: [] }),
+    }),
+    {
+      name: 'cart-storage',
+    }
+  )
+)
