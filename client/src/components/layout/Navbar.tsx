@@ -96,6 +96,12 @@ export default function Navbar() {
                 ${location === '/journal' ? 'text-primary' : ''}`}>
               JOURNAL
             </Link>
+            <Link 
+              href="/our-story" 
+              className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
+                ${location === '/our-story' ? 'text-primary' : ''}`}>
+              OUR STORY
+            </Link>
           </nav>
           
           {/* Right Side Icons */}

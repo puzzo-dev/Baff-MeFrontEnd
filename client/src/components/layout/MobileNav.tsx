@@ -41,6 +41,16 @@ export default function MobileNav() {
         </Link>
         
         <Link 
+          href="/our-story" 
+          className={`flex flex-col items-center ${location === '/our-story' 
+            ? 'text-primary' 
+            : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
+        >
+          <i className="bx bx-store text-xl"></i>
+          <span className="text-[10px] mt-1 font-medium">About</span>
+        </Link>
+        
+        <Link 
           href="/account" 
           className={`flex flex-col items-center ${location === '/account' 
             ? 'text-primary' 

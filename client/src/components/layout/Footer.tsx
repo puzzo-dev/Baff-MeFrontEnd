@@ -57,11 +57,11 @@ export default function Footer() {
           <div>
             <h3 className="font-medium text-white mb-4">ABOUT</h3>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Our Story</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Sustainability</Link></li>
+              <li><Link href="/our-story" className="text-gray-400 hover:text-white transition duration-150">Our Story</Link></li>
+              <li><Link href="/sustainability" className="text-gray-400 hover:text-white transition duration-150">Sustainability</Link></li>
               <li><Link href="/journal" className="text-gray-400 hover:text-white transition duration-150">Style Journal</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Careers</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition duration-150">Contact Us</Link></li>
+              <li><Link href="/careers" className="text-gray-400 hover:text-white transition duration-150">Careers</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-white transition duration-150">Contact Us</Link></li>
             </ul>
           </div>
         </div>
