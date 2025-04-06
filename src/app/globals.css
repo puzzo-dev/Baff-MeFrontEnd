@@ -24,7 +24,7 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 343 100% 60%;
-    --radius: 0.375rem;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -52,30 +52,30 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border antialiased;
   }
   
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-inter tracking-tight;
   }
 
   h1, h2, h3, h4 {
-    @apply font-bebas;
+    @apply font-bebas tracking-wide;
   }
 
   .logo {
-    @apply font-orbitron;
+    @apply font-orbitron tracking-widest;
   }
 }
 
 @layer components {
   .nav-link {
-    @apply relative inline-block;
+    @apply relative inline-block transition-colors duration-200;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-out;
   }
 
   .nav-link:hover::after {
@@ -83,11 +83,13 @@
   }
 
   .product-card {
-    @apply relative overflow-hidden rounded-lg transition-all duration-300;
+    @apply relative overflow-hidden rounded-lg bg-white dark:bg-neutral-900 
+           shadow-sm hover:shadow-lg transition-all duration-300 ease-out;
   }
 
   .product-card-hover {
-    @apply absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 transition-opacity duration-300;
+    @apply absolute inset-0 bg-black/50 flex items-center justify-center 
+           opacity-0 transition-opacity duration-300 ease-out;
   }
 
   .product-card:hover .product-card-hover {
@@ -95,15 +97,38 @@
   }
 
   .button-hover {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden transition-transform duration-300 ease-out;
   }
 
   .button-hover::before {
     content: '';
-    @apply absolute inset-0 bg-primary/10 transform -translate-x-full transition-transform duration-300;
+    @apply absolute inset-0 bg-primary/10 transform -translate-x-full 
+           transition-transform duration-300 ease-out;
   }
 
-  .button-hover:hover::before {
-    @apply translate-x-0;
+  .button-hover:hover {
+    @apply transform scale-[1.02];
+  }
+
+  .product-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 ease-out hover:-translate-y-1;
   }
 }
