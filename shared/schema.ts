@@ -1,6 +1,7 @@
 import { pgTable, text, serial, integer, boolean, timestamp, json, pgEnum } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+import { relations } from "drizzle-orm";
 
 // Product Schema
 export const products = pgTable("products", {
@@ -132,6 +133,42 @@ export const users = pgTable("users", {
 export const insertUserSchema = createInsertSchema(users)
   .omit({ id: true, createdAt: true, updatedAt: true });
 
+// Review Schema
+export const reviews = pgTable("reviews", {
+  id: serial("id").primaryKey(),
+  productId: integer("product_id").notNull(),
+  userId: integer("user_id").notNull(),
+  rating: integer("rating").notNull(),
+  title: text("title").notNull(),
+  comment: text("comment").notNull(),
+  isVerified: boolean("is_verified").default(false),
+  helpfulCount: integer("helpful_count").default(0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const reviewRelations = relations(reviews, ({ one }) => ({
+  product: one(products, {
+    fields: [reviews.productId],
+    references: [products.id],
+  }),
+  user: one(users, {
+    fields: [reviews.userId],
+    references: [users.id],
+  }),
+}));
+
+export const productRelations = relations(products, ({ many }) => ({
+  reviews: many(reviews),
+}));
+
+export const userRelations = relations(users, ({ many }) => ({
+  reviews: many(reviews),
+}));
+
+export const insertReviewSchema = createInsertSchema(reviews)
+  .omit({ id: true, createdAt: true, updatedAt: true });
+
 // Types
 export type Product = typeof products.$inferSelect;
 export type InsertProduct = z.infer<typeof insertProductSchema>;
@@ -150,3 +187,6 @@ export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
+
+export type Review = typeof reviews.$inferSelect;
+export type InsertReview = z.infer<typeof insertReviewSchema>;

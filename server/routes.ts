@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { featuredProducts, products, getFilteredProducts, getRelatedProducts, getFeaturedJournalPosts, journalPosts, getJournalPostBySlug } from "../client/src/lib/data";
 import { z } from "zod";
-import { insertProductSchema, insertBlogPostSchema, insertOrderSchema, insertUserSchema } from "@shared/schema";
+import { insertProductSchema, insertBlogPostSchema, insertOrderSchema, insertUserSchema, insertReviewSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Product routes
@@ -69,6 +69,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching related products:", error);
       res.status(500).json({ message: "Failed to fetch related products" });
+    }
+  });
+  
+  // Review routes
+  app.get("/api/products/:id/reviews", async (req, res) => {
+    try {
+      const productId = parseInt(req.params.id);
+      // Check if product exists first
+      const product = await storage.getProduct(productId);
+      
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      
+      const reviews = await storage.getProductReviews(productId);
+      res.json(reviews);
+    } catch (error) {
+      console.error("Error fetching product reviews:", error);
+      res.status(500).json({ message: "Failed to fetch product reviews" });
+    }
+  });
+  
+  app.post("/api/products/:id/reviews", async (req, res) => {
+    try {
+      const productId = parseInt(req.params.id);
+      // Check if product exists first
+      const product = await storage.getProduct(productId);
+      
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      
+      // Validate the review data
+      const reviewSchema = insertReviewSchema.extend({
+        userId: z.number().min(1)
+      });
+      
+      const reviewData = reviewSchema.parse({
+        ...req.body,
+        productId
+      });
+      
+      const review = await storage.createReview(reviewData);
+      res.status(201).json(review);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid review data", errors: error.errors });
+      }
+      console.error("Error creating review:", error);
+      res.status(500).json({ message: "Failed to create review" });
+    }
+  });
+  
+  app.post("/api/reviews/:id/helpful", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const review = await storage.getReview(id);
+      
+      if (!review) {
+        return res.status(404).json({ message: "Review not found" });
+      }
+      
+      const updatedReview = await storage.markReviewHelpful(id);
+      res.json(updatedReview);
+    } catch (error) {
+      console.error("Error marking review as helpful:", error);
+      res.status(500).json({ message: "Failed to mark review as helpful" });
+    }
+  });
+  
+  app.delete("/api/reviews/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const review = await storage.getReview(id);
+      
+      if (!review) {
+        return res.status(404).json({ message: "Review not found" });
+      }
+      
+      // In a real app, check if the user owns this review
+      // For now, just allow deletion
+      const result = await storage.deleteReview(id);
+      res.json({ success: result });
+    } catch (error) {
+      console.error("Error deleting review:", error);
+      res.status(500).json({ message: "Failed to delete review" });
     }
   });
 
