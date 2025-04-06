@@ -117,29 +117,28 @@ export default function Navbar() {
               <div className="relative" ref={themeMenuRef}>
                 <button 
                   onClick={toggleThemeOptions}
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150 flex items-center"
+                  className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition duration-150 flex items-center opacity-80"
                   aria-label="Theme options"
                 >
-                  <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl mr-1`}></i>
-                  <i className="bx bx-chevron-down text-sm"></i>
+                  <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-lg`}></i>
                 </button>
                 
                 {/* Theme Options Dropdown */}
                 <AnimatePresence>
                   {showThemeOptions && (
                     <motion.div 
-                      className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-gray-800 z-10"
-                      initial={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-44 rounded-lg shadow-sm py-1 bg-white/80 dark:bg-[#1A1A1A]/90 backdrop-blur-sm border border-gray-100 dark:border-gray-800/50 z-10"
+                      initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.15 }}
                     >
                       <button
                         onClick={() => {
                           setTheme('light');
                           setShowThemeOptions(false);
                         }}
-                        className={`flex items-center w-full px-4 py-2 text-sm ${theme === 'light' ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                        className={`flex items-center w-full px-3 py-2 text-xs ${theme === 'light' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
                       >
                         <i className="bx bx-sun text-lg mr-2"></i>
                         <span>Light Mode</span>
