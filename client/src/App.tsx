@@ -22,6 +22,9 @@ import FAQ from './pages/FAQ';
 import JournalPost from './pages/JournalPost';
 import { useTheme } from "./store/theme";
 import { useEffect } from "react";
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import ForgotPassword from '@/pages/ForgotPassword';
 
 function Router() {
   return (
@@ -42,6 +45,9 @@ function Router() {
       <Route path="/shipping" component={Shipping} />
       <Route path="/faq" component={FAQ} />
       <Route path="/journal/:id" component={JournalPost} /> {/* Added route for JournalPost */}
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/forgot-password" component={ForgotPassword} />
       <Route component={NotFound} />
     </Switch>
   );
