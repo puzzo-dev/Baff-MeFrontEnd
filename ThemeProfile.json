@@ -4,15 +4,15 @@
   "version": "1.0.0",
   "techStack": {
     "frontend": {
-      "framework": "React",
+      "framework": "Next.js",
       "language": "TypeScript",
       "styling": "Tailwind CSS",
       "stateManagement": "Zustand",
-      "routing": "Wouter",
-      "dataFetching": "TanStack Query"
+      "routing": "Next.js App Router",
+      "dataFetching": "Next.js Server Components"
     },
     "backend": {
-      "framework": "Express",
+      "framework": "Next.js API Routes",
       "language": "TypeScript",
       "runtime": "Node.js"
     }
