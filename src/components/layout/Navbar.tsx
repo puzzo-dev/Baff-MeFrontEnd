@@ -1,128 +1,86 @@
+'use client'
 
-"use client"
-
-import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
-import { useTheme } from "next-themes"
-import { AnimatePresence, motion } from "framer-motion"
-import { useCartStore } from "@/store/cart"
+import { useState } from 'react'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import { Menu, Sun, Moon, ShoppingCart } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-  const { openCart, getTotalItems } = useCartStore()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [showThemeOptions, setShowThemeOptions] = useState(false)
-  const themeMenuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (themeMenuRef.current && !themeMenuRef.current.contains(event.target as Node)) {
-        setShowThemeOptions(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [themeMenuRef])
 
   return (
-    <header className={`sticky top-0 z-50 backdrop-blur-md transition-all duration-300
-      ${scrolled 
-        ? "bg-white/95 dark:bg-[#111111]/95 shadow-sm" 
-        : "bg-white/90 dark:bg-[#111111]/90 border-b border-gray-100 dark:border-[#222222]"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center">
-            <span className="font-orbitron text-xl sm:text-2xl font-bold text-primary">BAFF-ME</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="font-orbitron text-xl">
+            BAFF-ME
           </Link>
 
-          <nav className="hidden md:flex space-x-6 lg:space-x-8">
-            <Link href="/products" className="nav-link relative hover:text-primary transition">
-              SHOP
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/products" className="hover:text-primary">
+              Shop
             </Link>
-            <Link href="/products?category=men" className="nav-link relative hover:text-primary transition">
-              MEN
+            <Link href="/our-story" className="hover:text-primary">
+              Our Story
             </Link>
-            <Link href="/products?category=women" className="nav-link relative hover:text-primary transition">
-              WOMEN
+            <Link href="/journal" className="hover:text-primary">
+              Journal
             </Link>
-            <Link href="/journal" className="nav-link relative hover:text-primary transition">
-              JOURNAL
-            </Link>
-          </nav>
+          </div>
 
           <div className="flex items-center space-x-4">
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-gray-600 dark:text-gray-300 hover:text-primary transition"
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="p-2 hover:bg-accent rounded-full"
             >
-              {theme === "dark" ? "🌙" : "☀️"}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-
-            <Link 
-              href="/account" 
-              className="text-gray-600 dark:text-gray-300 hover:text-primary transition"
-            >
-              <i className="bx bx-user text-xl"></i>
+            <Link href="/cart" className="p-2 hover:bg-accent rounded-full">
+              <ShoppingCart size={20} />
             </Link>
-
-            <button 
-              onClick={openCart}
-              className="relative text-gray-600 dark:text-gray-300 hover:text-primary transition"
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 hover:bg-accent rounded-full"
             >
-              <i className="bx bx-shopping-bag text-xl"></i>
-              {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  {getTotalItems()}
-                </span>
-              )}
-            </button>
-
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-600 dark:text-gray-300 hover:text-primary transition"
-            >
-              <i className={`bx ${mobileMenuOpen ? "bx-x" : "bx-menu"} text-2xl`}></i>
+              <Menu size={20} />
             </button>
           </div>
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white dark:bg-[#111111] border-t border-gray-100 dark:border-gray-800"
-          >
-            <div className="px-4 py-3 space-y-2">
-              <Link href="/products" className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md">
-                SHOP
-              </Link>
-              <Link href="/products?category=men" className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md">
-                MEN
-              </Link>
-              <Link href="/products?category=women" className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md">
-                WOMEN
-              </Link>
-              <Link href="/journal" className="block px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md">
-                JOURNAL
-              </Link>
-            </div>
-          </motion.div>
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          'md:hidden absolute w-full bg-background border-b',
+          isOpen ? 'block' : 'hidden'
         )}
-      </AnimatePresence>
-    </header>
+      >
+        <div className="container mx-auto px-4 py-4 space-y-4">
+          <Link
+            href="/products"
+            className="block hover:text-primary"
+            onClick={() => setIsOpen(false)}
+          >
+            Shop
+          </Link>
+          <Link
+            href="/our-story"
+            className="block hover:text-primary"
+            onClick={() => setIsOpen(false)}
+          >
+            Our Story
+          </Link>
+          <Link
+            href="/journal"
+            className="block hover:text-primary"
+            onClick={() => setIsOpen(false)}
+          >
+            Journal
+          </Link>
+        </div>
+      </div>
+    </nav>
   )
 }
