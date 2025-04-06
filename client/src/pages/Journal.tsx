@@ -14,7 +14,10 @@ export default function Journal() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
 
-  const { data: erpPosts, isLoading: erpLoading, error: erpError } = useQuery(['erp-blog-posts'], getBlogPosts);
+  const { data: erpPosts, isLoading: erpLoading, error: erpError } = useQuery({
+    queryKey: ['erp-blog-posts'],
+    queryFn: getBlogPosts
+  });
 
   useEffect(() => {
     // Load blog posts and categories
