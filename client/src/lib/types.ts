@@ -1,9 +1,13 @@
-
 // Environment variables
 export interface EnvVars {
   ERPNEXT_API_URL: string;
   ERPNEXT_API_KEY: string;
 }
+
+export const env = {
+  ERPNEXT_API_URL: typeof window !== 'undefined' ? window?.env?.ERPNEXT_API_URL : process.env.VITE_ERPNEXT_API_URL || 'https://your-erpnext-instance',
+  ERPNEXT_API_KEY: typeof window !== 'undefined' ? window?.env?.ERPNEXT_API_KEY : process.env.VITE_ERPNEXT_API_KEY || ''
+};
 
 declare global {
   interface Window {
@@ -11,10 +15,6 @@ declare global {
   }
 }
 
-window.env = {
-  ERPNEXT_API_URL: import.meta.env.VITE_ERPNEXT_API_URL || 'https://your-erpnext-instance',
-  ERPNEXT_API_KEY: import.meta.env.VITE_ERPNEXT_API_KEY || ''
-};
 
 export interface Product {
   id: string;

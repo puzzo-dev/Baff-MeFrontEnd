@@ -2,8 +2,10 @@
 import axios from 'axios';
 import { BlogPost } from './types';
 
-const ERPNEXT_BASE_URL = import.meta.env.VITE_ERPNEXT_API_URL;
-const ERPNEXT_API_KEY = import.meta.env.VITE_ERPNEXT_API_KEY;
+import { env } from './types';
+
+const ERPNEXT_BASE_URL = env.ERPNEXT_API_URL;
+const ERPNEXT_API_KEY = env.ERPNEXT_API_KEY;
 
 if (!ERPNEXT_BASE_URL || !ERPNEXT_API_KEY) {
   console.error('ERPNext API configuration missing. Please check your .env file.');
