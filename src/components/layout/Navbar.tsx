@@ -4,7 +4,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { Menu, Sun, Moon, ShoppingCart, User, Search, Heart, Home, Store, Tag, Menu as MenuIcon, X } from 'lucide-react'
+import { Menu, Sun, Moon, ShoppingCart, User, Search, Heart, Home, Store, Tag, Menu as MenuIcon, X, Newspaper } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -23,7 +24,7 @@ export function Navbar() {
   }, [])
 
   const navClasses = cn(
-    "fixed top-0 z-50 w-full transition-all duration-300",
+    "fixed top-0 z-[100] w-full transition-all duration-300",
     hasScrolled ? "bg-white/95 dark:bg-[#111111]/95 backdrop-blur-lg" : "bg-white/90 dark:bg-[#111111]/90 backdrop-blur-md",
     "border-b border-border"
   )
@@ -140,7 +141,7 @@ export function Navbar() {
 
       {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-[#111111] border-t border-border z-50">
-        <div className="grid grid-cols-4 py-2">
+        <div className="grid grid-cols-5 py-2">
           <Link
             href="/"
             className="flex flex-col items-center justify-center space-y-1 text-sm"
@@ -173,6 +174,22 @@ export function Navbar() {
           >
             <User size={20} />
             <span className="font-bebas-neue">Account</span>
+          </Link>
+          <Link
+            href={usePathname() === '/products' ? '/journal' : '/products'}
+            className="flex flex-col items-center justify-center space-y-1 text-sm"
+          >
+            {usePathname() === '/products' ? (
+              <>
+                <Newspaper size={20} />
+                <span className="font-bebas-neue">Journal</span>
+              </>
+            ) : (
+              <>
+                <Store size={20} />
+                <span className="font-bebas-neue">Shop</span>
+              </>
+            )}
           </Link>
         </div>
       </nav>

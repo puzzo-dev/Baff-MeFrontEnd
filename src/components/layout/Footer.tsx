@@ -65,6 +65,11 @@ export function Footer() {
                   Shipping Info
                 </Link>
               </li>
+              <li>
+                <Link href="/order-tracking" className="text-muted-foreground hover:text-primary transition-colors">
+                  Track Order
+                </Link>
+              </li>
             </ul>
           </div>
 
