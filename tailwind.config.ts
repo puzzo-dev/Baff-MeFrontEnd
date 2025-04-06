@@ -24,6 +24,20 @@ const config = {
       bebas: ['"Bebas Neue"', 'sans-serif'],
     },
     extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        orbitron: ['Orbitron', 'sans-serif'],
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        }
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
