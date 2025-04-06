@@ -8,7 +8,7 @@ import { Sun, Moon, ShoppingCart, User, Search, Heart, Home, Store, Menu } from 
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet } from "@/components/ui/sheet"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -70,13 +70,14 @@ export function Navbar() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4 md:space-x-8">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <button className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors md:hidden">
-                    <Menu size={24} />
-                  </button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-background">
+              <>
+                <button 
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors md:hidden"
+                >
+                  <Menu size={24} />
+                </button>
+                <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)} side="left">
                   <motion.div
                     initial="hidden"
                     animate="visible"
@@ -99,8 +100,8 @@ export function Navbar() {
                       </motion.div>
                     ))}
                   </motion.div>
-                </SheetContent>
-              </Sheet>
+                </Sheet>
+              </>
 
               <Link href="/" className="font-orbitron text-lg md:text-2xl font-bold text-foreground tracking-wider">
                 BAFF-ME
