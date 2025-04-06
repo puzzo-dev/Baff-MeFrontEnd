@@ -1,18 +1,10 @@
 
-import { ThemeProvider } from '@/components/theme-provider'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '@/lib/queryClient'
+import { Layout } from "@/components/layout/Layout"
 
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
-    </QueryClientProvider>
-  )
+  return <Layout>{children}</Layout>
 }
