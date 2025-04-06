@@ -1,65 +1,80 @@
+
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-background">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 to-black/40">
-        <Image
-          src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070"
-          alt="Hero Background"
-          fill
-          sizes="100vw"
-          quality={90}
-          className="object-cover mix-blend-overlay"
-          priority
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJx8lPjQzPT09MTQ+RE5ES01GNz01T1FXYmdoZGhkPk1RZW5seWaBf2j/2wBDARUXFyAeIB4gHh4gIiAdIB0dICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg/wAARCAAIAAQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-black to-gray-900 text-white">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 z-0"
+      >
+        <div className="absolute inset-0 bg-black/40" />
+        <img
+          src="/hero-bg.jpg"
+          alt="Hero background"
+          className="h-full w-full object-cover object-center"
         />
-      </div>
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl"
-        >
-          <motion.h1 
-            className="font-display text-7xl md:text-9xl font-bold text-white mb-6 tracking-tight"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+      </motion.div>
+
+      <div className="relative z-10 flex h-full items-center justify-center px-4">
+        <div className="text-center">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider mb-6"
           >
-            ELEVATE YOUR
-            <br />
-            STREET GAME
+            FUTURE OF FASHION
           </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-8 font-primary"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+          
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl mx-auto"
           >
-            Premium streetwear for the bold and fearless
+            Discover the latest in urban streetwear and cutting-edge fashion
           </motion.p>
+          
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex gap-6"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link href="/products" className="bg-primary text-white text-lg font-medium py-4 px-8 rounded-full hover:bg-primary/90 transition-all duration-300">
-              Shop Now
+            <Link
+              href="/products"
+              className="bg-white text-black px-8 py-3 rounded-full font-bebas-neue text-lg hover:bg-primary hover:text-white transition-colors duration-300"
+            >
+              SHOP NOW
             </Link>
-            <Link href="/collections/new-arrivals" className="bg-accent text-accent-foreground text-lg font-medium py-4 px-8 rounded-full hover:bg-accent/90 transition-all duration-300">
-              New Arrivals
+            <Link
+              href="/collections"
+              className="border border-white px-8 py-3 rounded-full font-bebas-neue text-lg hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              COLLECTIONS
             </Link>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
+
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="absolute bottom-8 left-0 right-0 z-10 text-center"
+      >
+        <div className="flex justify-center space-x-2">
+          <span className="h-2 w-2 rounded-full bg-white"></span>
+          <span className="h-2 w-2 rounded-full bg-white/50"></span>
+          <span className="h-2 w-2 rounded-full bg-white/50"></span>
+        </div>
+      </motion.div>
     </section>
   )
 }

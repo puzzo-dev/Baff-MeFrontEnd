@@ -55,6 +55,16 @@ export function Footer() {
                   Journal
                 </Link>
               </li>
+              <li>
+                <Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping" className="text-muted-foreground hover:text-primary transition-colors">
+                  Shipping Info
+                </Link>
+              </li>
             </ul>
           </div>
 
