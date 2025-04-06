@@ -16,15 +16,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(client)/layout.js"
     ],
-    "/(client)/products/page": [
+    "/(client)/wishlist/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(client)/products/page.js"
+      "static/chunks/app/(client)/wishlist/page.js"
     ],
-    "/_not-found/page": [
+    "/(client)/cart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/(client)/cart/page.js"
+    ],
+    "/(auth)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(auth)/layout.js"
+    ],
+    "/(auth)/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(auth)/login/page.js"
     ]
   }
 }
