@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: 'Next generation fashion e-commerce',
 }
 
+import { Providers } from '@/components/providers'
+import Nav from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+
 export default function RootLayout({
   children,
 }: {
@@ -20,14 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${orbitron.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
