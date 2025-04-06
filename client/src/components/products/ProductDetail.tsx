@@ -89,7 +89,7 @@ export default function ProductDetail({ product, currentUrl: externalUrl = '' }:
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="font-orbitron text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-2">
+        <h1 className="font-orbitron text-2xl md:text-3xl font-bold text-[#111111] dark:text-white mb-2 product-title">
           {product.name}
         </h1>
         
@@ -105,14 +105,14 @@ export default function ProductDetail({ product, currentUrl: externalUrl = '' }:
         </div>
         
         <div className="flex items-center justify-between mb-6">
-          <div className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white">
+          <div className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white product-price">
             ${product.price.toFixed(2)}
           </div>
           {/* Share Product Component */}
           <ShareProduct product={product} currentUrl={localUrl} />
         </div>
         
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-6 product-description">
           {product.description}
         </p>
         

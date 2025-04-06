@@ -30,20 +30,31 @@ function Router() {
 }
 
 function App() {
-  const { theme, setTheme } = useTheme();
+  const { theme, updateTimeBasedTheme, enableAutoTheme } = useTheme();
 
+  // Initialize and set up time-based theme
   useEffect(() => {
-    // Set initial theme based on system preference
+    // Check if we should enable auto theme by default
+    const savedAutoTheme = localStorage.getItem('autoTheme');
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const localTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     
-    if (localTheme) {
-      setTheme(localTheme);
-    } else if (prefersDark) {
-      setTheme("dark");
+    // If no preference is saved yet, enable auto theme and consider system preference
+    if (savedAutoTheme === null) {
+      enableAutoTheme(true);
     }
-  }, [setTheme]);
+    
+    // Update theme based on time immediately
+    updateTimeBasedTheme();
+    
+    // Set up interval to check time every minute
+    const timeInterval = setInterval(() => {
+      updateTimeBasedTheme();
+    }, 60000); // Check every minute
+    
+    return () => clearInterval(timeInterval);
+  }, [updateTimeBasedTheme, enableAutoTheme]);
 
+  // Apply theme to document
   useEffect(() => {
     // Apply theme class to root HTML element
     if (theme === "dark") {
@@ -51,9 +62,6 @@ function App() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-    
-    // Save theme preference to localStorage
-    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

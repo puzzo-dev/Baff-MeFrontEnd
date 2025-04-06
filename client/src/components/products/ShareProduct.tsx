@@ -74,15 +74,15 @@ export default function ShareProduct({ product, currentUrl }: ShareProductProps)
         <span className="text-sm font-medium">Share</span>
       </motion.button>
 
-      {/* Share Menu Dropdown */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            className="fixed sm:absolute right-4 sm:right-auto sm:left-0 mt-2 w-64 bg-white dark:bg-[#1A1A1A] rounded-lg shadow-lg z-50 border border-gray-200 dark:border-gray-800 overflow-hidden"
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+      {/* Share Menu Popup */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center sm:items-start sm:justify-end">
+          <div 
+            className="absolute inset-0 bg-black/30" 
+            onClick={() => setIsOpen(false)}
+          ></div>
+          <div 
+            className="relative w-[280px] max-w-[90vw] bg-white dark:bg-[#1A1A1A] rounded-lg shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden sm:mr-4 sm:mt-12"
           >
             {/* Share Preview */}
             <div className="p-3 border-b border-gray-200 dark:border-gray-800">
@@ -192,46 +192,23 @@ export default function ShareProduct({ product, currentUrl }: ShareProductProps)
                   y: -2
                 }}
                 whileTap={{ y: 1 }}
-                animate={copiedToClipboard ? 
-                  { 
-                    backgroundColor: "rgba(34, 197, 94, 0.1)",
-                    transition: { duration: 0.3 }
-                  } : 
-                  { backgroundColor: "rgba(0, 0, 0, 0.05)" }
-                }
               >
-                <AnimatePresence mode="wait">
-                  {copiedToClipboard ? (
-                    <motion.div 
-                      className="flex items-center"
-                      key="copied"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <FaCheck className="text-green-500 mr-2" />
-                      <span className="text-sm text-green-500 font-medium">Copied!</span>
-                    </motion.div>
-                  ) : (
-                    <motion.div 
-                      className="flex items-center"
-                      key="copy"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <FaLink className="mr-2" />
-                      <span className="text-sm">Copy Link</span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {copiedToClipboard ? (
+                  <div className="flex items-center">
+                    <FaCheck className="text-green-500 mr-2" />
+                    <span className="text-sm text-green-500 font-medium">Copied!</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center">
+                    <FaLink className="mr-2" />
+                    <span className="text-sm">Copy Link</span>
+                  </div>
+                )}
               </motion.button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

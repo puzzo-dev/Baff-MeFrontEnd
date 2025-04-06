@@ -1,14 +1,17 @@
 import { Link, useLocation } from 'wouter';
 import { useTheme } from '@/store/theme';
 import { useCartStore } from '@/store/cart';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Navbar() {
   const [location] = useLocation();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isAutoTheme, enableAutoTheme, setTheme } = useTheme();
   const { openCart, getTotalItems } = useCartStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showThemeOptions, setShowThemeOptions] = useState(false);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
   
   // Close mobile menu when changing routes
   useEffect(() => {
@@ -25,8 +28,26 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
+  // Close theme menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (themeMenuRef.current && !themeMenuRef.current.contains(event.target as Node)) {
+        setShowThemeOptions(false);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [themeMenuRef]);
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  const toggleThemeOptions = () => {
+    setShowThemeOptions(!showThemeOptions);
   };
   
   return (
@@ -86,14 +107,72 @@ export default function Navbar() {
                 <i className="bx bx-search text-xl"></i>
               </button>
               
-              {/* Theme Toggle */}
-              <button 
-                onClick={toggleTheme}
-                className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150"
-                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                <i className={`bx ${theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl`}></i>
-              </button>
+              {/* Theme Toggle - Desktop */}
+              <div className="relative" ref={themeMenuRef}>
+                <button 
+                  onClick={toggleThemeOptions}
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150 flex items-center"
+                  aria-label="Theme options"
+                >
+                  <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl mr-1`}></i>
+                  <i className="bx bx-chevron-down text-sm"></i>
+                </button>
+                
+                {/* Theme Options Dropdown */}
+                <AnimatePresence>
+                  {showThemeOptions && (
+                    <motion.div 
+                      className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-gray-800 z-10"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <button
+                        onClick={() => {
+                          setTheme('light');
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-2 text-sm ${theme === 'light' ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-sun text-lg mr-2"></i>
+                        <span>Light Mode</span>
+                        {!isAutoTheme && theme === 'light' && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                      
+                      <button
+                        onClick={() => {
+                          setTheme('dark');
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-2 text-sm ${theme === 'dark' ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-moon text-lg mr-2"></i>
+                        <span>Dark Mode</span>
+                        {!isAutoTheme && theme === 'dark' && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                      
+                      <button
+                        onClick={() => {
+                          enableAutoTheme(!isAutoTheme);
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-2 text-sm ${isAutoTheme ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-time text-lg mr-2"></i>
+                        <span>Auto (Time-based)</span>
+                        {isAutoTheme && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               
               {/* User Account */}
               <Link 
@@ -121,14 +200,71 @@ export default function Navbar() {
             
             {/* Mobile Icons - Only show necessary ones */}
             <div className="flex md:hidden items-center space-x-4">
-              {/* Theme Toggle */}
-              <button 
-                onClick={toggleTheme}
-                className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150"
-                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                <i className={`bx ${theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl`}></i>
-              </button>
+              {/* Theme Toggle - Mobile */}
+              <div className="relative" ref={themeMenuRef}>
+                <button 
+                  onClick={toggleThemeOptions}
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150 flex items-center"
+                  aria-label="Theme options"
+                >
+                  <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl`}></i>
+                </button>
+                
+                {/* Theme Options Dropdown */}
+                <AnimatePresence>
+                  {showThemeOptions && (
+                    <motion.div 
+                      className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-gray-800 z-10"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <button
+                        onClick={() => {
+                          setTheme('light');
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-3 text-sm ${theme === 'light' ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-sun text-lg mr-2"></i>
+                        <span>Light Mode</span>
+                        {!isAutoTheme && theme === 'light' && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                      
+                      <button
+                        onClick={() => {
+                          setTheme('dark');
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-3 text-sm ${theme === 'dark' ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-moon text-lg mr-2"></i>
+                        <span>Dark Mode</span>
+                        {!isAutoTheme && theme === 'dark' && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                      
+                      <button
+                        onClick={() => {
+                          enableAutoTheme(!isAutoTheme);
+                          setShowThemeOptions(false);
+                        }}
+                        className={`flex items-center w-full px-4 py-3 text-sm ${isAutoTheme ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                      >
+                        <i className="bx bx-time text-lg mr-2"></i>
+                        <span>Auto (Time-based)</span>
+                        {isAutoTheme && (
+                          <i className="bx bx-check text-lg ml-auto"></i>
+                        )}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               
               {/* Mobile Menu Button */}
               <button 

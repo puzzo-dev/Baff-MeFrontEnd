@@ -5,6 +5,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile font optimizations */
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 14px; /* Slightly smaller base font for mobile */
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .product-title {
+    font-size: 1.25rem !important;
+  }
+
+  .product-description {
+    font-size: 0.9rem !important;
+  }
+
+  .product-price {
+    font-size: 1.1rem !important;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
