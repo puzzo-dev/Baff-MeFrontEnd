@@ -15,6 +15,11 @@ import OurStory from "@/pages/OurStory";
 import Sustainability from "@/pages/Sustainability";
 import Careers from "@/pages/Careers";
 import Contact from "@/pages/Contact";
+import TrackOrder from './pages/TrackOrder';
+import Returns from './pages/Returns';
+import Shipping from './pages/Shipping';
+import FAQ from './pages/FAQ';
+import JournalPost from './pages/JournalPost';
 import { useTheme } from "./store/theme";
 import { useEffect } from "react";
 
@@ -32,6 +37,11 @@ function Router() {
       <Route path="/sustainability" component={Sustainability} />
       <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
+      <Route path="/track-order" component={TrackOrder} />
+      <Route path="/returns" component={Returns} />
+      <Route path="/shipping" component={Shipping} />
+      <Route path="/faq" component={FAQ} />
+      <Route path="/journal/:id" component={JournalPost} /> {/* Added route for JournalPost */}
       <Route component={NotFound} />
     </Switch>
   );
