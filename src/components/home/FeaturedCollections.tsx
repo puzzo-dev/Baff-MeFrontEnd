@@ -34,7 +34,7 @@ export function FeaturedCollections() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bebas-neue mb-12 text-center"
+          className="text-4xl md:text-5xl font-display mb-12 text-center text-foreground"
         >
           Featured Collections
         </motion.h2>
@@ -46,7 +46,7 @@ export function FeaturedCollections() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="relative h-[400px] group"
+              className="relative h-[400px] group rounded-lg overflow-hidden"
             >
               <Link href={collection.link}>
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors z-10"/>
@@ -57,7 +57,7 @@ export function FeaturedCollections() {
                   className="object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                  <h3 className="text-3xl font-bebas-neue text-white">{collection.name}</h3>
+                  <h3 className="text-3xl font-display text-white">{collection.name}</h3>
                 </div>
               </Link>
             </motion.div>

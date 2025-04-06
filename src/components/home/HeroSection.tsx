@@ -29,7 +29,7 @@ export function HeroSection() {
           className="max-w-4xl"
         >
           <motion.h1 
-            className="font-bebas-neue text-7xl md:text-9xl font-bold text-white mb-6 tracking-tight"
+            className="font-display text-7xl md:text-9xl font-bold text-white mb-6 tracking-tight"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -39,7 +39,7 @@ export function HeroSection() {
             STREET GAME
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-8 font-inter"
+            className="text-xl md:text-2xl text-white/90 mb-8 font-primary"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -52,10 +52,10 @@ export function HeroSection() {
             transition={{ delay: 0.6 }}
             className="flex gap-6"
           >
-            <Link href="/products" className="btn-primary text-lg font-medium py-4 px-8">
+            <Link href="/products" className="bg-primary text-white text-lg font-medium py-4 px-8 rounded-full hover:bg-primary/90 transition-all duration-300">
               Shop Now
             </Link>
-            <Link href="/collections/new-arrivals" className="btn-secondary text-lg">
+            <Link href="/collections/new-arrivals" className="bg-accent text-accent-foreground text-lg font-medium py-4 px-8 rounded-full hover:bg-accent/90 transition-all duration-300">
               New Arrivals
             </Link>
           </motion.div>

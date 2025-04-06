@@ -1,10 +1,10 @@
 
 export function CollectionBanner() {
   return (
-    <section className="py-16 bg-gray-100">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8">New Collection</h2>
-        <p className="mb-8">Discover our latest arrivals</p>
+    <section className="py-16 bg-accent/5">
+      <div className="container mx-auto text-center px-4">
+        <h2 className="text-4xl md:text-5xl font-display mb-8 text-foreground">New Collection</h2>
+        <p className="mb-8 text-lg font-primary text-foreground/80">Discover our latest arrivals</p>
       </div>
     </section>
   )
