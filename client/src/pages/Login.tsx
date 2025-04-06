@@ -14,21 +14,20 @@ export default function Login() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
+  const { login } = useAuthStore();
+  const searchParams = new URLSearchParams(window.location.search);
+  const redirect = searchParams.get('redirect') || '/account';
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await medusa.auth.authenticate({
-        email,
-        password,
+      await login(email, password);
+      toast({
+        title: "Success",
+        description: "Successfully logged in",
       });
-      if (response.customer) {
-        toast({
-          title: "Success",
-          description: "Successfully logged in",
-        });
-        setLocation('/account');
-      }
+      setLocation(redirect);
     } catch (error) {
       toast({
         title: "Error",
