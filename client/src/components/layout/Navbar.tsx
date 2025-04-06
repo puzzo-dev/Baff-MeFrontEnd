@@ -1,11 +1,14 @@
-import { Link, useLocation } from 'wouter';
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from '@/store/theme';
 import { useCartStore } from '@/store/cart';
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Navbar() {
-  const [location] = useLocation();
+  const pathname = usePathname();
   const { theme, toggleTheme, isAutoTheme, enableAutoTheme, setTheme } = useTheme();
   const { openCart, getTotalItems } = useCartStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,7 +19,7 @@ export default function Navbar() {
   // Close mobile menu when changing routes
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   // Add scroll effect
   useEffect(() => {
@@ -69,37 +72,37 @@ export default function Navbar() {
             <Link 
               href="/products" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/products' ? 'text-primary' : ''}`}>
+                ${pathname === '/products' ? 'text-primary' : ''}`}>
               SHOP
             </Link>
             <Link 
               href="/products?category=men" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/products?category=men' ? 'text-primary' : ''}`}>
+                ${pathname === '/products?category=men' ? 'text-primary' : ''}`}>
               MEN
             </Link>
             <Link 
               href="/products?category=women" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/products?category=women' ? 'text-primary' : ''}`}>
+                ${pathname === '/products?category=women' ? 'text-primary' : ''}`}>
               WOMEN
             </Link>
             <Link 
               href="/sustainability" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/sustainability' ? 'text-primary' : ''}`}>
+                ${pathname === '/sustainability' ? 'text-primary' : ''}`}>
               SUSTAINABILITY
             </Link>
             <Link 
               href="/journal" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/journal' ? 'text-primary' : ''}`}>
+                ${pathname === '/journal' ? 'text-primary' : ''}`}>
               JOURNAL
             </Link>
             <Link 
               href="/our-story" 
               className={`nav-link relative text-[#111111] dark:text-white hover:text-primary dark:hover:text-primary font-medium transition duration-150 py-2
-                ${location === '/our-story' ? 'text-primary' : ''}`}>
+                ${pathname === '/our-story' ? 'text-primary' : ''}`}>
               OUR STORY
             </Link>
           </nav>
@@ -183,7 +186,7 @@ export default function Navbar() {
               <Link 
                 href="/account" 
                 className={`text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150
-                  ${location === '/account' ? 'text-primary dark:text-primary' : ''}`}
+                  ${pathname === '/account' ? 'text-primary dark:text-primary' : ''}`}
               >
                 <i className="bx bx-user text-xl"></i>
               </Link>
@@ -293,7 +296,7 @@ export default function Navbar() {
           <Link 
             href="/products?category=new" 
             className={`block px-3 py-3 text-base font-medium rounded-md transition duration-150
-              ${location === '/products?category=new' 
+              ${pathname === '/products?category=new' 
                 ? 'bg-gray-50 dark:bg-gray-900 text-primary' 
                 : 'text-[#111111] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary dark:hover:text-primary'}`}>
             NEW
@@ -301,7 +304,7 @@ export default function Navbar() {
           <Link 
             href="/products?category=men" 
             className={`block px-3 py-3 text-base font-medium rounded-md transition duration-150
-              ${location === '/products?category=men' 
+              ${pathname === '/products?category=men' 
                 ? 'bg-gray-50 dark:bg-gray-900 text-primary' 
                 : 'text-[#111111] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary dark:hover:text-primary'}`}>
             MEN
@@ -309,7 +312,7 @@ export default function Navbar() {
           <Link 
             href="/products?category=women" 
             className={`block px-3 py-3 text-base font-medium rounded-md transition duration-150
-              ${location === '/products?category=women' 
+              ${pathname === '/products?category=women' 
                 ? 'bg-gray-50 dark:bg-gray-900 text-primary' 
                 : 'text-[#111111] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary dark:hover:text-primary'}`}>
             WOMEN
@@ -317,7 +320,7 @@ export default function Navbar() {
           <Link 
             href="/products" 
             className={`block px-3 py-3 text-base font-medium rounded-md transition duration-150
-              ${location === '/products' 
+              ${pathname === '/products' 
                 ? 'bg-gray-50 dark:bg-gray-900 text-primary' 
                 : 'text-[#111111] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary dark:hover:text-primary'}`}>
             COLLECTIONS
@@ -325,7 +328,7 @@ export default function Navbar() {
           <Link 
             href="/journal" 
             className={`block px-3 py-3 text-base font-medium rounded-md transition duration-150
-              ${location === '/journal' 
+              ${pathname === '/journal' 
                 ? 'bg-gray-50 dark:bg-gray-900 text-primary' 
                 : 'text-[#111111] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary dark:hover:text-primary'}`}>
             JOURNAL
