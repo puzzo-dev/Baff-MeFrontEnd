@@ -1,4 +1,3 @@
-
 'use client'
 
 import { motion } from 'framer-motion'
@@ -9,19 +8,19 @@ const collections = [
   {
     id: 1,
     name: "Juniors Drop",
-    image: "/images/juniors.webp",
+    image: "https://via.placeholder.com/150", // Placeholder image URL
     link: "/collections/juniors"
   },
   {
     id: 2,
     name: "Senior Drip",
-    image: "/images/seniors.webp",
+    image: "https://via.placeholder.com/150", // Placeholder image URL
     link: "/collections/seniors"
   },
   {
     id: 3,
     name: "Sneaker Heat",
-    image: "/images/sneakers.webp",
+    image: "https://via.placeholder.com/150", // Placeholder image URL
     link: "/collections/sneakers"
   }
 ]
