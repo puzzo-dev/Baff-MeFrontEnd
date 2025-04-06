@@ -1,8 +1,81 @@
-
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+
+// Placeholder for your ERPNext API integration.  Replace this with your actual implementation.
+const getJobOpenings = async (): Promise<JobOpening[]> => {
+  //  Your ERPNext API call to fetch job openings here.  Example:
+  //  const response = await fetch('/api/erpnext/hr/job-openings');
+  //  const data = await response.json();
+  //  return data;
+  return [
+    {
+      title: "Senior Product Designer",
+      department: "Design",
+      location: "New York",
+      type: "Full-time",
+      description: "Help us create the next generation of tech-enhanced clothing."
+    },
+    {
+      title: "Sustainability Manager",
+      department: "Operations",
+      location: "Remote",
+      type: "Full-time",
+      description: "Lead our initiatives for sustainable fashion practices."
+    },
+    {
+      title: "Frontend Developer",
+      department: "Technology",
+      location: "Remote",
+      type: "Full-time",
+      description: "Build amazing user experiences for our digital platforms."
+    },
+    {
+      title: "Fashion Technologist",
+      department: "Innovation",
+      location: "London",
+      type: "Full-time",
+      description: "Merge fashion with cutting-edge technology."
+    }
+  ];
+};
+
+
+interface JobOpening {
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  description: string;
+}
 
 export default function Careers() {
+  const [jobs, setJobs] = useState<JobOpening[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const data = await getJobOpenings();
+        setJobs(data);
+      } catch (err) {
+        setError('Failed to load job openings');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJobs();
+  }, []);
+
+  if (loading) {
+    return <div className="flex justify-center items-center min-h-[50vh]">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500 text-center">{error}</div>;
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#111111]">
       <div className="relative h-[50vh] overflow-hidden mb-16">
@@ -35,36 +108,7 @@ export default function Careers() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              title: "Senior Product Designer",
-              department: "Design",
-              location: "New York",
-              type: "Full-time",
-              description: "Help us create the next generation of tech-enhanced clothing."
-            },
-            {
-              title: "Sustainability Manager",
-              department: "Operations",
-              location: "Remote",
-              type: "Full-time",
-              description: "Lead our initiatives for sustainable fashion practices."
-            },
-            {
-              title: "Frontend Developer",
-              department: "Technology",
-              location: "Remote",
-              type: "Full-time",
-              description: "Build amazing user experiences for our digital platforms."
-            },
-            {
-              title: "Fashion Technologist",
-              department: "Innovation",
-              location: "London",
-              type: "Full-time",
-              description: "Merge fashion with cutting-edge technology."
-            }
-          ].map((job, index) => (
+          {jobs.map((job, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 20 }}

@@ -26,18 +26,41 @@ export default function Contact() {
             className="bg-gray-50 dark:bg-[#222222] rounded-2xl p-8"
           >
             <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget as HTMLFormElement);
+              try {
+                await submitContactForm({
+                  doctype: "Communication",
+                  name: formData.get('name') as string,
+                  email: formData.get('email') as string,
+                  message: formData.get('message') as string,
+                  subject: 'Website Contact Form'
+                });
+                toast({
+                  title: "Success",
+                  description: "Your message has been sent successfully!",
+                });
+                (e.target as HTMLFormElement).reset();
+              } catch (error) {
+                toast({
+                  title: "Error",
+                  description: "Failed to send message. Please try again.",
+                  variant: "destructive"
+                });
+              }
+            }}>
               <div>
                 <label className="block mb-2 font-medium">Name</label>
-                <Input type="text" placeholder="Your name" className="w-full" />
+                <Input name="name" type="text" placeholder="Your name" className="w-full" required />
               </div>
               <div>
                 <label className="block mb-2 font-medium">Email</label>
-                <Input type="email" placeholder="your@email.com" className="w-full" />
+                <Input name="email" type="email" placeholder="your@email.com" className="w-full" required />
               </div>
               <div>
                 <label className="block mb-2 font-medium">Message</label>
-                <Textarea placeholder="How can we help?" className="h-32 w-full" />
+                <Textarea name="message" placeholder="How can we help?" className="h-32 w-full" required />
               </div>
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                 Send Message
