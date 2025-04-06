@@ -9,10 +9,10 @@ export const featuredProducts: Product[] = [
     description: 'Engineered with weather-adaptive fabric technology, the Tech Windbreaker combines futuristic design with practical urban functionality. Water-resistant outer shell with thermal regulation for all-season comfort.',
     price: 129.99,
     images: [
-      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1559551409-dadc959f76b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1571945153237-4929e783af4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80',
+      'https://images.unsplash.com/photo-1548126032-079a0fb0099d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80',
+      'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80'
     ],
     category: 'men',
     collection: 'urban',
@@ -41,10 +41,10 @@ export const featuredProducts: Product[] = [
     description: 'Versatile and functional cargo pants designed for the urban landscape. Features multiple pockets, adjustable waist, and durable fabric with a slight stretch for all-day comfort.',
     price: 89.99,
     images: [
-      'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1588117260148-b47818741c74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1576566588028-4147f3842f27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      'https://images.unsplash.com/photo-1584865288642-42078afe6942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      'https://images.unsplash.com/photo-1626557981101-aae6f84aa6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'
     ],
     category: 'men',
     collection: 'quantum',
@@ -70,10 +70,10 @@ export const featuredProducts: Product[] = [
     description: 'Ultra-lightweight performance sneakers with eye-catching neon accents. Features responsive cushioning, breathable mesh upper, and durable traction pattern for urban terrain.',
     price: 149.99,
     images: [
-      'https://images.unsplash.com/photo-1597033130343-925cb110d0be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1548369735-f548cbe6a294?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1575456456278-936c89ccdb3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+      'https://images.unsplash.com/photo-1605408499391-6368c628ef42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80',
+      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
     ],
     category: 'accessories',
     collection: 'neon',
@@ -101,10 +101,10 @@ export const featuredProducts: Product[] = [
     description: 'Engineered with weather-adaptive fabric technology, the Quantum Tech Jacket combines futuristic design with practical urban functionality. Water-resistant outer shell with thermal regulation for all-season comfort.',
     price: 189.99,
     images: [
-      'https://images.unsplash.com/photo-1617952236317-460627867943?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-      'https://images.unsplash.com/photo-1617952236333-6f7170e2f115?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300',
-      'https://images.unsplash.com/photo-1617952236644-3e3a57884ad5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300',
-      'https://images.unsplash.com/photo-1559582146-12b52b0e8fc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300'
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80',
+      'https://images.unsplash.com/photo-1571945153237-4929e783af4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      'https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80'
     ],
     category: 'men',
     collection: 'quantum',
@@ -137,9 +137,9 @@ export const products: Product[] = [
     description: 'Oversized hoodie with vibrant neon stripe detail. Made from premium cotton blend for maximum comfort and style.',
     price: 79.99,
     images: [
-      'https://images.unsplash.com/photo-1578175351409-4a581cba5304?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1590189272815-2a3657be6cc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1580985325083-6a1b52651a54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1529415553495-598d1330c2a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1509942774463-acf339cf87d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+      'https://images.unsplash.com/photo-1575165458724-d00706a756a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
     ],
     category: 'men',
     collection: 'neon',
@@ -159,9 +159,9 @@ export const products: Product[] = [
     description: 'Water-resistant backpack with anti-theft technology and USB charging port. Perfect for the urban commuter.',
     price: 89.99,
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1581605405669-fcdf81165afa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1554410307-233a51ce5ebb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+      'https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
+      'https://images.unsplash.com/photo-1562546106-b9cb3a76a206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
     ],
     category: 'accessories',
     collection: 'urban',
@@ -187,9 +187,9 @@ export const products: Product[] = [
     description: 'Lightweight running jacket with 360° reflectivity for visibility during night runs. Features moisture-wicking fabric and ventilation for maximum comfort.',
     price: 99.99,
     images: [
-      'https://images.unsplash.com/photo-1543076659-9380cdf10613?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1560769629-975ec94e6a86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1598346762291-aee88549193f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1097&q=80',
+      'https://images.unsplash.com/photo-1578763363228-5a3ba7fd4fc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80',
+      'https://images.unsplash.com/photo-1520013633864-32a91b83d8d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'
     ],
     category: 'women',
     collection: 'urban',
@@ -210,9 +210,9 @@ export const products: Product[] = [
     description: 'Technical utility shorts designed for urban exploration. Features quick-dry fabric, multiple pockets, and stretch waistband for comfort.',
     price: 59.99,
     images: [
-      'https://images.unsplash.com/photo-1617740084888-d1995488183d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1596336893725-43d309589935?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1549673699-1c60d9ce1249?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+      'https://images.unsplash.com/photo-1560243563-062bfc001d68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
     ],
     category: 'men',
     collection: 'urban',
@@ -233,9 +233,9 @@ export const products: Product[] = [
     description: 'Trendy cropped hoodie with modern relaxed fit. Features premium cotton blend and raw edge details for an urban aesthetic.',
     price: 69.99,
     images: [
-      'https://images.unsplash.com/photo-1565537222174-2b3ca62f2da9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1582552938357-32b906df40cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1624280157150-4d1ed7075d7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=720&q=80',
+      'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1594061677699-ad69da365b6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
     ],
     category: 'women',
     collection: 'quantum',
@@ -255,9 +255,9 @@ export const products: Product[] = [
     description: 'Multi-pocket tactical vest designed for urban functionality. Features lightweight, water-resistant fabric with adjustable fit.',
     price: 119.99,
     images: [
-      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1589810635657-232948472d98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-      'https://images.unsplash.com/photo-1600434481049-2cd0badf5d68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+      'https://images.unsplash.com/photo-1517502166878-35c93a0072f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
+      'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+      'https://images.unsplash.com/photo-1633966887768-64f9a867bdba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1072&q=80'
     ],
     category: 'men',
     collection: 'quantum',
@@ -296,7 +296,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>As always, true urban style comes from authentic self-expression. Use these trends as a starting point, but make them your own through unexpected combinations and personal touches.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1536766820879-059fec98ec0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
     category: 'trends',
     author: 'Alex Morgan',
     publishDate: '2024-01-15',
@@ -324,7 +324,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>The tech fabric revolution isn't just changing how our clothes perform—it's changing our relationship with clothing itself, creating garments that actively respond to our needs and environment rather than simply covering us.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     category: 'innovation',
     author: 'Jade Kim',
     publishDate: '2024-02-03',
@@ -352,7 +352,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>As urban fashion continues to evolve, sustainability isn't just a responsibility—it's an opportunity for creative innovation that pushes the industry forward while preserving the planet for future generations of streetwear enthusiasts.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80',
     category: 'sustainability',
     author: 'Marcus Chen',
     publishDate: '2024-02-21',
@@ -380,7 +380,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>The mainstreaming of street culture hasn't diminished its power; it has multiplied its impact. Today's street-influenced fashion continues to embody the creativity, authenticity, and cultural commentary that made it revolutionary in the first place.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1524601500432-1e1a4c71d692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
     category: 'culture',
     author: 'Sofia Rodriguez',
     publishDate: '2024-03-05',
@@ -408,7 +408,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>The most compelling layered looks maintain a cohesive aesthetic while showcasing thoughtful details. Each layer should stand on its own while contributing to a unified whole—a philosophy that defines contemporary urban style.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1624634214875-c40a05a9f14a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
     category: 'style',
     author: 'Nate Williams',
     publishDate: '2024-03-18',
@@ -436,7 +436,7 @@ export const journalPosts: BlogPost[] = [
       
       <p>Digital fashion isn't replacing physical clothing—it's expanding what fashion can be. As our identities increasingly exist across multiple realms, digital fashion offers new ways to express ourselves, connect with others, and push the boundaries of creativity.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1635942173617-adea8a242476?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1120&q=80',
     category: 'innovation',
     author: 'Jade Kim',
     publishDate: '2024-04-02',
