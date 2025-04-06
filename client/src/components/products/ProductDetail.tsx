@@ -2,17 +2,28 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Product } from '@/lib/types';
 import { useCartStore } from '@/store/cart';
+import ShareProduct from './ShareProduct';
 
 interface ProductDetailProps {
   product: Product;
+  currentUrl?: string;
 }
 
-export default function ProductDetail({ product }: ProductDetailProps) {
+export default function ProductDetail({ product, currentUrl: externalUrl = '' }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
   const [activeSize, setActiveSize] = useState(product.sizes?.[0] || 'M');
   const [activeColor, setActiveColor] = useState(product.colors?.[0]?.name || 'Default');
   const [activeImage, setActiveImage] = useState(0);
   const [accordionOpen, setAccordionOpen] = useState({ details: false, shipping: false, care: false });
+  
+  // Use the passed URL or get it from window
+  const [localUrl, setLocalUrl] = useState(externalUrl);
+  
+  useEffect(() => {
+    if (!localUrl && typeof window !== 'undefined') {
+      setLocalUrl(window.location.href);
+    }
+  }, [localUrl]);
   
   const { addItem, openCart } = useCartStore();
   
@@ -93,8 +104,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <span className="text-sm text-gray-500 dark:text-gray-400">{product.rating || 4.5} ({product.reviewCount || 128} reviews)</span>
         </div>
         
-        <div className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white mb-6">
-          ${product.price.toFixed(2)}
+        <div className="flex items-center justify-between mb-6">
+          <div className="text-xl md:text-2xl font-bold text-[#111111] dark:text-white">
+            ${product.price.toFixed(2)}
+          </div>
+          {/* Share Product Component */}
+          <ShareProduct product={product} currentUrl={localUrl} />
         </div>
         
         <p className="text-gray-600 dark:text-gray-300 mb-6">

@@ -12,7 +12,15 @@ export default function ProductDetailPage() {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [currentUrl, setCurrentUrl] = useState('');
   
+  // Set current URL for metadata and sharing
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -96,11 +104,27 @@ export default function ProductDetailPage() {
     <>
       <Helmet>
         <title>{product.name} | Baff-Me</title>
-        <meta name="description" content={product.description} />
+        <meta name="description" content={product.description.substring(0, 155) + '...'} />
+        
+        {/* Basic Open Graph Tags */}
         <meta property="og:title" content={`${product.name} | Baff-Me`} />
-        <meta property="og:description" content={product.description} />
+        <meta property="og:description" content={product.description.substring(0, 155) + '...'} />
         <meta property="og:image" content={product.images[0]} />
+        <meta property="og:image:alt" content={product.name} />
         <meta property="og:type" content="product" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:site_name" content="Baff-Me" />
+        
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${product.name} | Baff-Me`} />
+        <meta name="twitter:description" content={product.description.substring(0, 155) + '...'} />
+        <meta name="twitter:image" content={product.images[0]} />
+        
+        {/* Product-specific metadata */}
+        <meta property="product:price:amount" content={product.price.toString()} />
+        <meta property="product:price:currency" content="USD" />
+        {product.category && <meta property="product:category" content={product.category} />}
       </Helmet>
       
       <section className="py-16 md:py-24 bg-white dark:bg-[#111111]">
@@ -118,7 +142,7 @@ export default function ProductDetailPage() {
             <span className="text-[#111111] dark:text-white">{product.name}</span>
           </div>
           
-          <ProductDetail product={product} />
+          <ProductDetail product={product} currentUrl={currentUrl} />
           
           {/* Related Products */}
           {relatedProducts.length > 0 && (
