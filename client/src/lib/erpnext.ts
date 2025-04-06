@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { BlogPost } from './types';
 
 const ERPNEXT_BASE_URL = process.env.ERPNEXT_API_URL || 'https://your-erpnext-instance';
 
@@ -27,6 +28,49 @@ export interface ContactSubmission {
   message: string;
   subject: string;
 }
+
+export const getBlogPosts = async (): Promise<BlogPost[]> => {
+  try {
+    const response = await erpnextApi.get('/api/resource/Blog Post');
+    return response.data.data.map((post: any) => ({
+      id: post.name,
+      title: post.title,
+      slug: post.name,
+      excerpt: post.blog_intro || '',
+      content: post.content,
+      image: post.meta_image || '',
+      category: post.blog_category || 'Uncategorized',
+      author: post.blogger,
+      publishDate: post.published_date,
+      tags: post.tags || []
+    }));
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return [];
+  }
+};
+
+export const getBlogPostByName = async (name: string): Promise<BlogPost | null> => {
+  try {
+    const response = await erpnextApi.get(`/api/resource/Blog Post/${name}`);
+    const post = response.data.data;
+    return {
+      id: post.name,
+      title: post.title,
+      slug: post.name,
+      excerpt: post.blog_intro || '',
+      content: post.content,
+      image: post.meta_image || '',
+      category: post.blog_category || 'Uncategorized',
+      author: post.blogger,
+      publishDate: post.published_date,
+      tags: post.tags || []
+    };
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    return null;
+  }
+};
 
 export const getJobOpenings = async (): Promise<JobOpening[]> => {
   try {
