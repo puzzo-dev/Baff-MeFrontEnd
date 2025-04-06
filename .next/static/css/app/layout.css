@@ -1975,10 +1975,6 @@ body{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
-.bg-gray-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
 .bg-green-100{
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity, 1));
@@ -2183,6 +2179,9 @@ body{
 }
 .pt-1{
   padding-top: 0.25rem;
+}
+.pt-16{
+  padding-top: 4rem;
 }
 .pt-3{
   padding-top: 0.75rem;
