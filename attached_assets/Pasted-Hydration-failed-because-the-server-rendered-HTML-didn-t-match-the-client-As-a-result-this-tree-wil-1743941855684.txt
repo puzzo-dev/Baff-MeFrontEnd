@@ -1,0 +1,59 @@
+Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+
+  ...
+    <Providers>
+      <QueryClientProvider client={{}}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
+          <$ attribute="class" defaultTheme="dark" enableSystem={true}>
+            <f attribute="class" defaultTheme="dark" enableSystem={true}>
+              <script>
+              <Layout>
+                <div className="min-h-scre...">
+                  <Navbar>
+                    <header className={"sticky t..."}>
+                      <div className="max-w-7xl ...">
+                        <div className="flex justi...">
+                          <LinkComponent>
+                          <nav>
+                          <div className="flex items...">
+                            <button
+                              onClick={function onClick}
+                              className="text-gray-600 dark:text-gray-300 hover:text-primary transition"
+                            >
++                             🌙
+-                             ☀️
+                            ...
+                      ...
+                  ...
+              ...
+
+src/components/layout/Navbar.tsx (65:13) @ Navbar
+
+  63 |
+  64 |           <div className="flex items-center space-x-4">
+> 65 |             <button 
+     |             ^
+  66 |               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+  67 |               className="text-gray-600 dark:text-gray-300 hover:text-primary transition"
+  68 |             >
+
+Call Stack 15
+Show 11 ignore-listed frame(s)
+button
+unknown (0:0)
+Navbar
+src/components/layout/Navbar.tsx (65:13)
+Layout
+src/components/layout/Layout.tsx (10:7)
+RootLayout
+src/app/layout.tsx (23:11)
