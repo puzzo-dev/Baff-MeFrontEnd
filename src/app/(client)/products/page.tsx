@@ -1,6 +1,7 @@
 
 import { Metadata } from 'next'
 import { getProducts } from '@/lib/actions'
+'use client'
 import { ProductCard } from '@/components/products/ProductCard'
 
 export const metadata: Metadata = {

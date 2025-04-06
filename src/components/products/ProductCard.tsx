@@ -1,4 +1,6 @@
 
+'use client'
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Product } from '@/lib/types';
@@ -8,7 +10,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
   const { addItem, openCart } = useCartStore();
   
   const handleQuickAdd = (e: React.MouseEvent) => {
