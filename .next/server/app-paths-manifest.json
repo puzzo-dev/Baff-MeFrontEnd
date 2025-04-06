@@ -1,6 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/(client)/wishlist/page": "app/(client)/wishlist/page.js",
-  "/(client)/cart/page": "app/(client)/cart/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js"
-}
+{}
