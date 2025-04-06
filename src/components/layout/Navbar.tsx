@@ -57,85 +57,86 @@ export function Navbar() {
                 BAFF-ME
               </Link>
 
-            <div className="hidden md:flex items-center space-x-8">
-              {menuItems.slice(0, 4).map((item) => (
-                <Link 
-                  key={item.href}
-                  href={item.href} 
-                  className="font-bebas-neue text-lg hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+              <div className="hidden md:flex items-center space-x-8">
+                {menuItems.slice(0, 4).map((item) => (
+                  <Link 
+                    key={item.href}
+                    href={item.href} 
+                    className="font-bebas-neue text-lg hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
 
-            <div className="flex items-center space-x-4">
-              <button className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
-                <Search size={20} />
-              </button>
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors"
-              >
-                <div className="relative w-5 h-5">
-                  <Sun
-                    size={20}
-                    className={`absolute transition-opacity ${
-                      theme === 'dark' ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  />
-                  <Moon
-                    size={20}
-                    className={`absolute transition-opacity ${
-                      theme === 'dark' ? 'opacity-0' : 'opacity-100'
-                    }`}
-                  />
-                </div>
-              </button>
-              <Link href="/wishlist" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
-                <Heart size={20} />
-              </Link>
-              <Link href="/account" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
-                <User size={20} />
-              </Link>
-              <Link href="/cart" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors relative">
-                <ShoppingCart size={20} />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
+              <div className="flex items-center space-x-4">
+                <button className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
+                  <Search size={20} />
+                </button>
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors"
+                >
+                  <div className="relative w-5 h-5">
+                    <Sun
+                      size={20}
+                      className={`absolute transition-opacity ${
+                        theme === 'dark' ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
+                    <Moon
+                      size={20}
+                      className={`absolute transition-opacity ${
+                        theme === 'dark' ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    />
+                  </div>
+                </button>
+                <Link href="/wishlist" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
+                  <Heart size={20} />
+                </Link>
+                <Link href="/account" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
+                  <User size={20} />
+                </Link>
+                <Link href="/cart" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors relative">
+                  <ShoppingCart size={20} />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-16 left-0 right-0 bg-white dark:bg-[#111111] border-b border-border"
-            >
-              <div className="container mx-auto py-4 px-4">
-                <div className="flex flex-col space-y-4">
-                  {menuItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="font-bebas-neue text-lg hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="absolute top-16 left-0 right-0 bg-white dark:bg-[#111111] border-b border-border"
+              >
+                <div className="container mx-auto py-4 px-4">
+                  <div className="flex flex-col space-y-4">
+                    {menuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="font-bebas-neue text-lg hover:text-primary transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </nav>
 
       {/* Mobile Bottom Navigation */}
