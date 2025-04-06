@@ -19,9 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-        orbitron: ['Orbitron', 'sans-serif'],
-        bebas: ['"Bebas Neue"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        logo: ['Orbitron', 'sans-serif'],
+        display: ['"Bebas Neue"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
