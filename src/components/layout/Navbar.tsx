@@ -45,18 +45,17 @@ export function Navbar() {
       <nav className={navClasses}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4 md:hidden">
+            <div className="flex items-center justify-between w-full md:w-auto">
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
-                className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors"
+                className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors md:hidden"
               >
                 {isOpen ? <X size={20} /> : <MenuIcon size={20} />}
               </button>
-            </div>
 
-            <Link href="/" className="font-orbitron text-xl md:text-2xl font-bold text-foreground tracking-wider">
-              BAFF-ME
-            </Link>
+              <Link href="/" className="font-orbitron text-lg md:text-2xl font-bold text-foreground tracking-wider mx-auto md:mx-0">
+                BAFF-ME
+              </Link>
 
             <div className="hidden md:flex items-center space-x-8">
               {menuItems.slice(0, 4).map((item) => (
