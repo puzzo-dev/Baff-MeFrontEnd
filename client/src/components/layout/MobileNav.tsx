@@ -1,25 +1,35 @@
+
 import { Link, useLocation } from 'wouter';
 import { useTheme } from '@/store/theme';
 import { useCartStore } from '@/store/cart';
+import { useEffect, useState } from 'react';
 
 export default function MobileNav() {
   const [location] = useLocation();
   const { theme } = useTheme();
   const { openCart, getTotalItems } = useCartStore();
+  const [randomPage, setRandomPage] = useState({
+    path: '/our-story',
+    name: 'Our Story',
+    icon: 'bx-store'
+  });
+  
+  const pages = [
+    { path: '/our-story', name: 'Our Story', icon: 'bx-store' },
+    { path: '/sustainability', name: 'Eco', icon: 'bx-leaf' },
+    { path: '/journal', name: 'Journal', icon: 'bx-book' },
+    { path: '/careers', name: 'Careers', icon: 'bx-briefcase' },
+    { path: '/contact', name: 'Contact', icon: 'bx-envelope' }
+  ];
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * pages.length);
+    setRandomPage(pages[randomIndex]);
+  }, []);
   
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#111111] border-t border-gray-200 dark:border-gray-800 py-3 md:hidden z-40 shadow-lg">
       <div className="max-w-md mx-auto flex justify-around items-center">
-        <Link 
-          href="/" 
-          className={`flex flex-col items-center ${location === '/' 
-            ? 'text-primary' 
-            : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
-        >
-          <i className="bx bx-home-alt text-xl"></i>
-          <span className="text-[10px] mt-1 font-medium">Home</span>
-        </Link>
-        
         <Link 
           href="/products" 
           className={`flex flex-col items-center ${location.startsWith('/products') 
@@ -31,23 +41,23 @@ export default function MobileNav() {
         </Link>
         
         <Link 
-          href="/sustainability" 
-          className={`flex flex-col items-center ${location === '/sustainability' 
+          href="/products?type=collection" 
+          className={`flex flex-col items-center ${location.includes('collection') 
             ? 'text-primary' 
             : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
         >
-          <i className="bx bx-leaf text-xl"></i>
-          <span className="text-[10px] mt-1 font-medium">Eco</span>
+          <i className="bx bx-collection text-xl"></i>
+          <span className="text-[10px] mt-1 font-medium">Collections</span>
         </Link>
         
         <Link 
-          href="/our-story" 
-          className={`flex flex-col items-center ${location === '/our-story' 
+          href={randomPage.path}
+          className={`flex flex-col items-center ${location === randomPage.path
             ? 'text-primary' 
             : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'}`}
         >
-          <i className="bx bx-store text-xl"></i>
-          <span className="text-[10px] mt-1 font-medium">About</span>
+          <i className={`bx ${randomPage.icon} text-xl`}></i>
+          <span className="text-[10px] mt-1 font-medium">{randomPage.name}</span>
         </Link>
         
         <Link 
