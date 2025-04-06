@@ -1,40 +1,9 @@
+"use client"
 
-'use client'
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { type ThemeProviderProps } from "next-themes/dist/types"
 
-import { createContext, useContext, useEffect, useState } from 'react'
-
-type Theme = 'dark' | 'light' | 'system'
-
-const ThemeContext = createContext<{
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}>({
-  theme: 'system',
-  setTheme: () => null
-})
-
-export function ThemeProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [theme, setTheme] = useState<Theme>('system')
-
-  useEffect(() => {
-    const root = window.document.documentElement
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      root.classList.toggle('dark', systemTheme === 'dark')
-    } else {
-      root.classList.toggle('dark', theme === 'dark')
-    }
-  }, [theme])
-
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
-
-export const useTheme = () => useContext(ThemeContext)

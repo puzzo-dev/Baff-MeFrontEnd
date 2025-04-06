@@ -9,7 +9,7 @@ const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' })
 
 export const metadata: Metadata = {
   title: 'BAFF-ME E-commerce',
-  description: 'Modern fashion e-commerce experience',
+  description: 'Next generation fashion e-commerce',
 }
 
 export default function RootLayout({
@@ -19,8 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${orbitron.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${inter.variable} ${orbitron.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>
