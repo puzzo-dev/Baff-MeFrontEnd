@@ -64,7 +64,20 @@ export function Navbar() {
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors"
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                <div className="relative w-5 h-5">
+                  <Sun
+                    size={20}
+                    className={`absolute transition-opacity ${
+                      theme === 'dark' ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                  <Moon
+                    size={20}
+                    className={`absolute transition-opacity ${
+                      theme === 'dark' ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  />
+                </div>
               </button>
               <Link href="/wishlist" className="p-2 hover:bg-accent/10 rounded-full text-foreground transition-colors">
                 <Heart size={20} />
