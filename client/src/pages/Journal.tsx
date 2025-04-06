@@ -16,7 +16,14 @@ export default function Journal() {
 
   const { data: erpPosts, isLoading: erpLoading, error: erpError } = useQuery({
     queryKey: ['erp-blog-posts'],
-    queryFn: getBlogPosts
+    queryFn: async () => {
+      try {
+        return await getBlogPosts();
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        return [];
+      }
+    }
   });
 
   useEffect(() => {

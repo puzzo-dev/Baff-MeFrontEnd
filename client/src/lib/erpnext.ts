@@ -2,8 +2,12 @@
 import axios from 'axios';
 import { BlogPost } from './types';
 
-const ERPNEXT_BASE_URL = import.meta.env.VITE_ERPNEXT_API_URL || 'https://your-erpnext-instance';
-const ERPNEXT_API_KEY = import.meta.env.VITE_ERPNEXT_API_KEY || '';
+const ERPNEXT_BASE_URL = import.meta.env.VITE_ERPNEXT_API_URL;
+const ERPNEXT_API_KEY = import.meta.env.VITE_ERPNEXT_API_KEY;
+
+if (!ERPNEXT_BASE_URL || !ERPNEXT_API_KEY) {
+  console.error('ERPNext API configuration missing. Please check your .env file.');
+}
 
 const erpnextApi = axios.create({
   baseURL: ERPNEXT_BASE_URL,
