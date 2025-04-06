@@ -789,5 +789,38 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-// Use the database implementation
-export const storage = new DatabaseStorage();
+// Use in-memory implementation
+class InMemoryStorage {
+  private users = new Map();
+  private products = new Map();
+  private orders = new Map();
+  private reviews = new Map();
+  private userId = 1;
+  private orderId = 1;
+  private reviewId = 1;
+
+  async createUser(insertUser) {
+    const id = this.userId++;
+    const user = { ...insertUser, id, createdAt: new Date(), updatedAt: new Date() };
+    this.users.set(id, user);
+    return user;
+  }
+
+  async getUser(id) {
+    return this.users.get(id);
+  }
+
+  async updateUser(id, data) {
+    const user = this.users.get(id);
+    if (!user) return undefined;
+    const updatedUser = { ...user, ...data, updatedAt: new Date() };
+    this.users.set(id, updatedUser);
+    return updatedUser;
+  }
+
+  async deleteUser(id) {
+    return this.users.delete(id);
+  }
+}
+
+export const storage = new InMemoryStorage();
