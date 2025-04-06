@@ -1,4 +1,3 @@
-
 {
   "name": "baff-me-ecommerce",
   "version": "1.0.0",
@@ -22,11 +21,17 @@
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.2",
+    "@replit/vite-plugin-cartographer": "^0.0.11",
+    "@replit/vite-plugin-runtime-error-modal": "^0.0.3",
+    "@replit/vite-plugin-shadcn-theme-json": "^0.0.4",
+    "@tailwindcss/typography": "^0.5.16",
     "@tanstack/react-query": "^5.60.5",
+    "@vitejs/plugin-react": "^4.3.4",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
+    "drizzle-kit": "^0.30.6",
     "framer-motion": "^11.13.1",
     "lucide-react": "^0.453.0",
     "next": "14.1.4",
@@ -36,6 +41,7 @@
     "react-hook-form": "^7.53.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "vite": "^6.2.5",
     "zod": "^3.23.8",
     "zustand": "^5.0.3"
   },
