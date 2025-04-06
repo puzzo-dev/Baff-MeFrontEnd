@@ -1,5 +1,5 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/app/globals.css ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/globals.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************/
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
 
@@ -514,69 +514,106 @@ video {
 
 :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 343 100% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 4% 16%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 343 100% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 343 100% 60%;
-    --radius: 0.375rem;
+    --foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
   }
 
 .dark {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 343 100% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 240 5% 96%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 64%;
-    --accent: 343 100% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 343 100% 60%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
   }
 
-*{
-  border-color: hsl(var(--border));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+    font-size: 16px;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+h1{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.025em;
+}
+
+@media (min-width: 768px){
+
+  h1{
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1024px){
+
+  h1{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+h2{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+@media (min-width: 768px){
+
+  h2{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px){
+
+  h2{
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+h3{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 768px){
+
+  h3{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+p{
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  line-height: 1.625;
+}
+
+@media (min-width: 768px){
+
+  p{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 body{
   background-color: hsl(var(--background));
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: hsl(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1;
-}
-
-h1, h2, h3, h4{
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.025em;
-}
-
-body{
-  font-family: Inter, sans-serif;
 }
 .container{
   width: 100%;
@@ -1016,16 +1053,6 @@ body{
 .prose :where(figure figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *)){
   color: hsl(var(--muted-foreground));
 }
-.nav-link{
-  color: hsl(var(--foreground));
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-  animation-duration: 200ms;
-}
-.nav-link:hover{
-  color: hsl(var(--primary));
-}
 .hero-section{
   position: relative;
   display: flex;
@@ -1098,34 +1125,6 @@ body{
 }
 .btn-secondary:hover{
   background-color: hsl(var(--secondary) / 0.8);
-}
-.nav-link{
-  position: relative;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.nav-link::before{
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  height: 0.125rem;
-  width: 0px;
-  background-color: hsl(var(--primary));
-  content: var(--tw-content);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.nav-link:hover{
-  color: hsl(var(--primary));
-}
-.nav-link:hover::before{
-  content: var(--tw-content);
-  width: 100%;
 }
 .sr-only{
   position: absolute;
@@ -1223,9 +1222,6 @@ body{
 }
 .top-1\/2{
   top: 50%;
-}
-.top-16{
-  top: 4rem;
 }
 .top-3{
   top: 0.75rem;
@@ -1503,9 +1499,6 @@ body{
 }
 .w-4{
   width: 1rem;
-}
-.w-48{
-  width: 12rem;
 }
 .w-5{
   width: 1.25rem;
@@ -1951,9 +1944,6 @@ body{
 .bg-background{
   background-color: hsl(var(--background));
 }
-.bg-background\/95{
-  background-color: hsl(var(--background) / 0.95);
-}
 .bg-black{
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
@@ -2316,9 +2306,6 @@ body{
 }
 .text-foreground{
   color: hsl(var(--foreground));
-}
-.text-foreground\/60{
-  color: hsl(var(--foreground) / 0.6);
 }
 .text-gray-300{
   --tw-text-opacity: 1;
@@ -2889,10 +2876,6 @@ body{
 
 .group\/menu-item:focus-within .group-focus-within\/menu-item\:opacity-100{
   opacity: 1;
-}
-
-.group:hover .group-hover\:block{
-  display: block;
 }
 
 .group\/menu-item:hover .group-hover\/menu-item\:opacity-100{
