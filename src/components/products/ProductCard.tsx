@@ -1,94 +1,52 @@
-
 'use client'
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Product } from '@/lib/types';
-import { useCartStore } from '@/store/cart';
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Product } from '@/lib/types'
+import { useCartStore } from '@/store/cart'
+import Image from 'next/image'
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { addItem, openCart } = useCartStore();
-  
+  const { addItem, openCart } = useCartStore()
+
   const handleQuickAdd = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Add with default options
-    const defaultSize = product.sizes ? product.sizes[0] : 'M';
-    const defaultColor = product.colors ? product.colors[0].name : 'Default';
-    
-    addItem(product, 1, defaultSize, defaultColor);
-    openCart();
-  };
-  
+    e.preventDefault()
+    addItem(product)
+    openCart()
+  }
+
   return (
-    <motion.div 
-      className="product-card group relative rounded-lg overflow-hidden"
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-      }}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="group relative overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-lg"
     >
-      <Link href={`/product/${product.id}`} className="block">
-        <div className="relative overflow-hidden aspect-[3/4]">
-          <img 
-            src={product.images[0]} 
-            alt={product.name} 
-            className="object-cover w-full h-full" 
+      <Link href={`/products/${product.handle}`} className="block">
+        <div className="relative aspect-square overflow-hidden">
+          <Image
+            src={product.images[0] || "https://via.placeholder.com/150"}
+            alt={product.title}
+            className="object-cover transition-transform group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          
-          {product.isNew && (
-            <div className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">
-              NEW
-            </div>
-          )}
-          
-          {product.isTrending && (
-            <div className="absolute top-3 left-3 bg-[#FFC107] text-white text-xs font-bold px-2 py-1 rounded">
-              TRENDING
-            </div>
-          )}
-          
-          <div className="hover-info absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 text-white">
-            <div className="flex justify-between items-end">
-              <div>
-                <h3 className="font-medium text-lg">{product.name}</h3>
-                <p className="text-sm text-gray-300">
-                  {product.subtitle} | {product.colors?.length || 0} Colors
-                </p>
-              </div>
-              <span className="font-bold">${product.price.toFixed(2)}</span>
-            </div>
-          </div>
         </div>
-        
-        <div className="mt-4 flex justify-between items-center">
-          <div className="flex space-x-1">
-            {product.colors?.slice(0, 3).map((color) => (
-              <div 
-                key={color.name}
-                className="color-swatch w-4 h-4 rounded-full border border-gray-300 cursor-pointer"
-                style={{ backgroundColor: color.hex }}
-                aria-label={color.name}
-                title={color.name}
-              ></div>
-            ))}
-          </div>
-          <motion.button 
-            className="bg-[#111111] dark:bg-white text-white dark:text-[#111111] p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white"
-            onClick={handleQuickAdd}
-            aria-label="Add to bag"
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ y: -2 }}
-          >
-            <i className="bx bx-shopping-bag"></i>
-          </motion.button>
+        <div className="p-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{product.title}</h3>
+          <p className="mt-1 text-gray-500 dark:text-gray-400">${product.price}</p>
         </div>
       </Link>
+      <button
+        onClick={handleQuickAdd}
+        className="absolute bottom-4 right-4 rounded-full bg-black dark:bg-white text-white dark:text-black p-3 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
+      >
+        Quick Add
+      </button>
     </motion.div>
-  );
+  )
 }

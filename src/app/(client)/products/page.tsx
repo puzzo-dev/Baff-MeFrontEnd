@@ -1,6 +1,4 @@
 
-'use client'
-
 import { Metadata } from 'next'
 import { getProducts } from '@/lib/actions'
 import { ProductCard } from '@/components/products/ProductCard'
