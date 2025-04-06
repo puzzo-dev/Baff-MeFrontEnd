@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { BlogPost } from './types';
 
-const ERPNEXT_BASE_URL = process.env.ERPNEXT_API_URL || 'https://your-erpnext-instance';
+const ERPNEXT_BASE_URL = window.env.ERPNEXT_API_URL;
 
 const erpnextApi = axios.create({
   baseURL: ERPNEXT_BASE_URL,

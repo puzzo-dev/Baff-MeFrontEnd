@@ -1,3 +1,21 @@
+
+// Environment variables
+export interface EnvVars {
+  ERPNEXT_API_URL: string;
+  ERPNEXT_API_KEY: string;
+}
+
+declare global {
+  interface Window {
+    env: EnvVars;
+  }
+}
+
+window.env = {
+  ERPNEXT_API_URL: import.meta.env.VITE_ERPNEXT_API_URL || 'https://your-erpnext-instance',
+  ERPNEXT_API_KEY: import.meta.env.VITE_ERPNEXT_API_KEY || ''
+};
+
 export interface Product {
   id: string;
   name: string;
