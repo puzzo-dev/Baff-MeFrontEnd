@@ -11,6 +11,10 @@ import Cart from "@/pages/Cart";
 import Account from "@/pages/Account";
 import Journal from "@/pages/Journal";
 import Checkout from "@/pages/Checkout";
+import OurStory from "@/pages/OurStory";
+import Sustainability from "@/pages/Sustainability";
+import Careers from "@/pages/Careers";
+import Contact from "@/pages/Contact";
 import { useTheme } from "./store/theme";
 import { useEffect } from "react";
 
@@ -24,6 +28,10 @@ function Router() {
       <Route path="/account" component={Account} />
       <Route path="/journal" component={Journal} />
       <Route path="/checkout" component={Checkout} />
+      <Route path="/our-story" component={OurStory} />
+      <Route path="/sustainability" component={Sustainability} />
+      <Route path="/careers" component={Careers} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -37,20 +45,20 @@ function App() {
     // Check if we should enable auto theme by default
     const savedAutoTheme = localStorage.getItem('autoTheme');
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
+
     // If no preference is saved yet, enable auto theme and consider system preference
     if (savedAutoTheme === null) {
       enableAutoTheme(true);
     }
-    
+
     // Update theme based on time immediately
     updateTimeBasedTheme();
-    
+
     // Set up interval to check time every minute
     const timeInterval = setInterval(() => {
       updateTimeBasedTheme();
     }, 60000); // Check every minute
-    
+
     return () => clearInterval(timeInterval);
   }, [updateTimeBasedTheme, enableAutoTheme]);
 
