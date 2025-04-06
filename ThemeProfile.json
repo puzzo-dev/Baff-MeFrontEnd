@@ -1,0 +1,64 @@
+
+{
+  "name": "BAFF-ME E-commerce",
+  "version": "1.0.0",
+  "techStack": {
+    "frontend": {
+      "framework": "React",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "stateManagement": "Zustand",
+      "routing": "Wouter",
+      "dataFetching": "TanStack Query"
+    },
+    "backend": {
+      "framework": "Express",
+      "language": "TypeScript",
+      "runtime": "Node.js"
+    }
+  },
+  "theme": {
+    "colors": {
+      "primary": "hsl(var(--primary))",
+      "background": {
+        "light": "#FFFFFF",
+        "dark": "#111111"
+      },
+      "text": {
+        "light": "#111111",
+        "dark": "#FFFFFF"
+      },
+      "accent": "hsl(var(--accent))"
+    },
+    "typography": {
+      "fonts": {
+        "primary": "Inter",
+        "logo": "Orbitron",
+        "display": "Bebas Neue"
+      }
+    },
+    "components": {
+      "navbar": {
+        "height": "64px",
+        "background": {
+          "default": "bg-white/90 dark:bg-[#111111]/90",
+          "scrolled": "bg-white/95 dark:bg-[#111111]/95"
+        }
+      },
+      "buttons": {
+        "primary": "bg-primary text-white",
+        "secondary": "bg-accent text-accent-foreground"
+      }
+    },
+    "transitions": {
+      "default": "transition-all duration-300",
+      "fast": "transition-all duration-150"
+    }
+  },
+  "features": {
+    "darkMode": true,
+    "autoTheme": true,
+    "responsiveDesign": true,
+    "animations": "Framer Motion"
+  }
+}

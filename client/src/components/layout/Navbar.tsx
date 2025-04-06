@@ -12,22 +12,22 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showThemeOptions, setShowThemeOptions] = useState(false);
   const themeMenuRef = useRef<HTMLDivElement>(null);
-  
+
   // Close mobile menu when changing routes
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
-  
+
   // Add scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   // Close theme menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -35,21 +35,21 @@ export default function Navbar() {
         setShowThemeOptions(false);
       }
     }
-    
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [themeMenuRef]);
-  
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
+
   const toggleThemeOptions = () => {
     setShowThemeOptions(!showThemeOptions);
   };
-  
+
   return (
     <header className={`sticky top-0 z-50 backdrop-blur-md transition-all duration-300
       ${scrolled 
@@ -63,7 +63,7 @@ export default function Navbar() {
               <span className="font-orbitron text-xl sm:text-2xl font-bold text-primary">BAFF-ME</span>
             </Link>
           </div>
-          
+
           {/* Main Navigation - Desktop */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8">
             <Link 
@@ -103,7 +103,7 @@ export default function Navbar() {
               OUR STORY
             </Link>
           </nav>
-          
+
           {/* Right Side Icons */}
           <div className="flex items-center">
             {/* Desktop Icons */}
@@ -112,7 +112,7 @@ export default function Navbar() {
               <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition duration-150" aria-label="Search">
                 <i className="bx bx-search text-xl"></i>
               </button>
-              
+
               {/* Theme Toggle - Desktop */}
               <div className="relative" ref={themeMenuRef}>
                 <button 
@@ -122,7 +122,7 @@ export default function Navbar() {
                 >
                   <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-lg`}></i>
                 </button>
-                
+
                 {/* Theme Options Dropdown */}
                 <AnimatePresence>
                   {showThemeOptions && (
@@ -146,7 +146,7 @@ export default function Navbar() {
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
                       </button>
-                      
+
                       <button
                         onClick={() => {
                           setTheme('dark');
@@ -160,7 +160,7 @@ export default function Navbar() {
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
                       </button>
-                      
+
                       <button
                         onClick={() => {
                           enableAutoTheme(!isAutoTheme);
@@ -169,7 +169,7 @@ export default function Navbar() {
                         className={`flex items-center w-full px-4 py-2 text-sm ${isAutoTheme ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
                       >
                         <i className="bx bx-time text-lg mr-2"></i>
-                        <span>Auto (Time-based)</span>
+                        <span>Auto</span>
                         {isAutoTheme && (
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
@@ -178,7 +178,7 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
-              
+
               {/* User Account */}
               <Link 
                 href="/account" 
@@ -187,7 +187,7 @@ export default function Navbar() {
               >
                 <i className="bx bx-user text-xl"></i>
               </Link>
-              
+
               {/* Cart */}
               <button 
                 onClick={openCart}
@@ -202,7 +202,7 @@ export default function Navbar() {
                 )}
               </button>
             </div>
-            
+
             {/* Mobile Icons - Only show necessary ones */}
             <div className="flex md:hidden items-center space-x-4">
               {/* Theme Toggle - Mobile */}
@@ -214,7 +214,7 @@ export default function Navbar() {
                 >
                   <i className={`bx ${isAutoTheme ? 'bx-time' : theme === 'dark' ? 'bx-moon' : 'bx-sun'} text-xl`}></i>
                 </button>
-                
+
                 {/* Theme Options Dropdown */}
                 <AnimatePresence>
                   {showThemeOptions && (
@@ -238,7 +238,7 @@ export default function Navbar() {
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
                       </button>
-                      
+
                       <button
                         onClick={() => {
                           setTheme('dark');
@@ -252,7 +252,7 @@ export default function Navbar() {
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
                       </button>
-                      
+
                       <button
                         onClick={() => {
                           enableAutoTheme(!isAutoTheme);
@@ -261,7 +261,7 @@ export default function Navbar() {
                         className={`flex items-center w-full px-4 py-3 text-sm ${isAutoTheme ? 'text-primary' : 'text-gray-700 dark:text-gray-300'} hover:bg-gray-100 dark:hover:bg-gray-800`}
                       >
                         <i className="bx bx-time text-lg mr-2"></i>
-                        <span>Auto (Time-based)</span>
+                        <span>Auto</span>
                         {isAutoTheme && (
                           <i className="bx bx-check text-lg ml-auto"></i>
                         )}
@@ -270,7 +270,7 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
-              
+
               {/* Mobile Menu Button */}
               <button 
                 onClick={toggleMobileMenu}
@@ -283,7 +283,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Menu - Slide down animation */}
       <div 
         className={`md:hidden bg-white dark:bg-[#111111] shadow-lg transform transition-all duration-300 ease-in-out overflow-hidden
