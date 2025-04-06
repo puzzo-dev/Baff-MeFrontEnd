@@ -34,10 +34,12 @@ export interface ContactSubmission {
   subject: string;
 }
 
+import { journalPosts } from './data';
+
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
     const response = await erpnextApi.get('/api/resource/Blog Post');
-    return response.data.data.map((post: any) => ({
+    const apiPosts = response.data.data.map((post: any) => ({
       id: post.name,
       title: post.title,
       slug: post.name,
@@ -49,9 +51,11 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
       publishDate: post.published_date,
       tags: post.tags || []
     }));
+    
+    return apiPosts.length > 0 ? apiPosts : journalPosts;
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    return [];
+    return journalPosts; // Return demo content on error
   }
 };
 
